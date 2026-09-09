@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class SmartTrafficSignal {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.println("SMART TRAFFIC SIGNAL SYSTEM");
+            System.out.println("----------------------------");
+
+            System.out.print("Enter traffic sensor reading (0-100): ");
+            int sensor = sc.nextInt();
+
+            if (sensor < 0 || sensor > 100) {
+                throw new IllegalArgumentException("Invalid sensor reading!");
+            }
+
+            System.out.print("Is signal data available? (yes/no): ");
+            String signal = sc.next();
+
+            if (signal.equalsIgnoreCase("no")) {
+                throw new Exception("Signal data unavailable!");
+            }
+
+            System.out.print("Enter signal timing in seconds (10-120): ");
+            int timing = sc.nextInt();
+
+            if (timing < 10 || timing > 120) {
+                throw new IllegalArgumentException("Incorrect timing value!");
+            }
+
+            System.out.println("\nTraffic signal updated successfully.");
+            System.out.println("Sensor Reading : " + sensor);
+            System.out.println("Signal Data    : Available");
+            System.out.println("Signal Timing  : " + timing + " seconds");
+
+        } 
+        catch (IllegalArgumentException e) {
+            System.out.println("Exception: " + e.getMessage());
+        } 
+        catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
+
+        sc.close();
+    }
+}
